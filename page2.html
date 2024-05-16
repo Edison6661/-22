@@ -16,22 +16,31 @@
             text-align: center;
             padding: 20px 0;
         }
-        .content {
-            background-color: white;
-            padding: 20px;
+        .container {
             display: flex;
-            flex-direction: column;
+        }
+        .menu {
+            width: 25%;
+            border: 2px solid black;
+            padding: 20px;
+        }
+        .menu button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid black;
+            background-color: blue;
+            color: white;
+        }
+        .content {
+            width: 75%;
+            padding: 20px;
         }
         .visualization {
-            border: 1px solid black;
+            border: 2px solid black;
             padding: 20px;
-            margin-left: auto;
-            width: 40%;
-        }
-        .visualization p, .visualization div, .visualization h1, .visualization ul {
-            margin: 10px 0;
-        }
-        .section {
             margin-top: 20px;
         }
         pre {
@@ -40,6 +49,9 @@
             border: 1px solid #ccc;
             overflow-x: auto;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -47,18 +59,18 @@
         <h1>Лабораторна робота №2</h1>
     </div>
 
-    <div class="content">
-        <h2>Тема:</h2>
-        <p>КАСКАДНІ ТАБЛИЦІ СТИЛІВ. СЕЛЕКТОРИ .ІДЕНТИФІКАТОРИ. СТИЛЬОВЕ ОФОРМЛЕННЯ ТЕКСТОВИХ ЕЛЕМЕНТІВ В HTML-ДОКУМЕНТАХ.</p>
-        
-        <h2>Мета:</h2>
-        <p>придбати практичні навички роботи з селекторами, ідентифікаторами, списками, різноманітними властивостями кольору і фону, зовнішними та внутрішними відступами, плаваючими елементами, оформленням текстових елементів</p>
-
-        <h2>ХІД ВИКОНАННЯ РОБОТИ</h2>
-
-        <div class="section">
-            <h3>1. Селектори тегу</h3>
-            <pre>
+    <div class="container">
+        <div class="menu">
+            <button onclick="showSection('tag-selector')">Селектори тегу</button>
+            <button onclick="showSection('class-selector')">Селектори класів</button>
+            <button onclick="showSection('id-selector')">Селектори ідентифікаторів</button>
+            <button onclick="showSection('other-selectors')">Інші селектори</button>
+            <button onclick="showSection('css-styling')">CSS: Шрифти, Текст, Таблиці, Фон, Контур, Списки, СSS Просунутий</button>
+        </div>
+        <div class="content">
+            <div id="tag-selector" class="hidden">
+                <h3>Селектори тегу</h3>
+                <pre>
 &lt;!-- HTML --&gt;
 &lt;p&gt;Це селектор тегу для &lt;b&gt;абзацу&lt;/b&gt;.&lt;/p&gt;
 
@@ -66,12 +78,14 @@
 p {
     color: blue;
 }
-            </pre>
-        </div>
-
-        <div class="section">
-            <h3>2. Селектори класів</h3>
-            <pre>
+                </pre>
+                <div class="visualization">
+                    <p>Це селектор тегу для <b>абзацу</b>.</p>
+                </div>
+            </div>
+            <div id="class-selector" class="hidden">
+                <h3>Селектори класів</h3>
+                <pre>
 &lt;!-- HTML --&gt;
 &lt;div class="highlight"&gt;Це селектор класу.&lt;/div&gt;
 
@@ -80,12 +94,14 @@ p {
     background-color: yellow;
     padding: 10px;
 }
-            </pre>
-        </div>
-
-        <div class="section">
-            <h3>3. Селектори ідентифікаторів</h3>
-            <pre>
+                </pre>
+                <div class="visualization">
+                    <div class="highlight">Це селектор класу.</div>
+                </div>
+            </div>
+            <div id="id-selector" class="hidden">
+                <h3>Селектори ідентифікаторів</h3>
+                <pre>
 &lt;!-- HTML --&gt;
 &lt;h1 id="main-title"&gt;Це селектор ідентифікатора&lt;/h1&gt;
 
@@ -94,12 +110,14 @@ p {
     font-size: 24px;
     color: green;
 }
-            </pre>
-        </div>
-
-        <div class="section">
-            <h3>4. Інші селектори</h3>
-            <pre>
+                </pre>
+                <div class="visualization">
+                    <h1 id="main-title">Це селектор ідентифікатора</h1>
+                </div>
+            </div>
+            <div id="other-selectors" class="hidden">
+                <h3>Інші селектори</h3>
+                <pre>
 &lt;!-- HTML --&gt;
 &lt;ul&gt;
     &lt;li&gt;Елемент 1&lt;/li&gt;
@@ -119,12 +137,18 @@ ul li.special {
 ul li:last-child {
     font-weight: bold;
 }
-            </pre>
-        </div>
-
-        <div class="section">
-            <h3>5. CSS: Шрифти Текст Таблиці Фон Контур Списки СSS Просунутий</h3>
-            <pre>
+                </pre>
+                <div class="visualization">
+                    <ul>
+                        <li>Елемент 1</li>
+                        <li class="special">Елемент 2</li>
+                        <li>Елемент 3</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="css-styling" class="hidden">
+                <h3>CSS: Шрифти, Текст, Таблиці, Фон, Контур, Списки, СSS Просунутий</h3>
+                <pre>
 &lt;!-- HTML --&gt;
 &lt;div class="styled-text"&gt;Це стильовий текст.&lt;/div&gt;
 
@@ -136,21 +160,21 @@ ul li:last-child {
     padding: 10px;
     border: 1px solid black;
 }
-            </pre>
+                </pre>
+                <div class="visualization">
+                    <div class="styled-text">Це стильовий текст.</div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="visualization">
-        <h2>Візуалізація</h2>
-        <p>Це селектор тегу для <b>абзацу</b>.</p>
-        <div class="highlight">Це селектор класу.</div>
-        <h1 id="main-title">Це селектор ідентифікатора</h1>
-        <ul>
-            <li>Елемент 1</li>
-            <li class="special">Елемент 2</li>
-            <li>Елемент 3</li>
-        </ul>
-        <div class="styled-text">Це стильовий текст.</div>
-    </div>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content > div');
+            sections.forEach(section => section.classList.add('hidden'));
+
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
