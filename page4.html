@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №4</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .visualization {
+            border: 2px solid black;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .content {
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: 2px solid black;
+            border-radius: 15%;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #FFD700;
+            color: black;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Лабораторна робота №4</h1>
+        <h2>Тема: Адаптивна верстка. Медіа-запити. Метатег Viewport</h2>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <h2>Мета:</h2>
+            <p>
+                Адаптивна верстка. Медіа-запити. Медіа-типи. Медіа-функції.Метатег viewport. Інструменти розробника. Стратегія Mobile First.
+            </p>
+
+            <h2>ХІД ВИКОНАННЯ РОБОТИ</h2>
+            <ol>
+                <li>У звітному HTML-документі розмістити тему та постановку задачі лабораторної роботи №4.</li>
+                <li>Використовуючі медіа-запити та CSS-правила, для вибраних вами брейкпоінтів, виконати адаптивну верстку для:
+                    <ul>
+                        <li>Десктопної версії</li>
+                        <li>Планшетної версії</li>
+                        <li>Мобільної версії</li>
+                    </ul>
+                </li>
+                <li>У звітному HTML-документі привести пояснення створення десктопної, планшетної та мобільної версії.</li>
+                <li>В процесі розробки адаптивної верстки, застосувати логічні оператори.</li>
+                <li>Оформлення звітного HTML-документа лабораторної роботи №5 виконати на свій розсуд.</li>
+            </ol>
+        </div>
+
+        <div class="buttons-container">
+            <button class="btn" onclick="showContent('desktop')">Десктопна версія</button>
+            <button class="btn" onclick="showContent('tablet')">Планшетна версія</button>
+            <button class="btn" onclick="showContent('mobile')">Мобільна версія</button>
+        </div>
+
+        <div id="desktop" class="visualization hidden">
+            <h3>Десктопна версія</h3>
+            <pre>
+&lt;style&gt;
+body {
+    font-size: 18px;
+    background-color: white;
+    color: black;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+&lt;/style&gt;
+            </pre>
+        </div>
+
+        <div id="tablet" class="visualization hidden">
+            <h3>Планшетна версія</h3>
+            <pre>
+&lt;style&gt;
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    .container {
+        width: 90%;
+    }
+}
+&lt;/style&gt;
+            </pre>
+        </div>
+
+        <div id="mobile" class="visualization hidden">
+            <h3>Мобільна версія</h3>
+            <pre>
+&lt;style&gt;
+@media (max-width: 576px) {
+    body {
+        font-size: 14px;
+    }
+    .container {
+        width: 100%;
+    }
+}
+&lt;/style&gt;
+            </pre>
+        </div>
+    </div>
+
+    <script>
+        function showContent(id) {
+            const visualizations = document.querySelectorAll('.visualization');
+            visualizations.forEach(viz => {
+                if (viz.id === id) {
+                    viz.classList.remove('hidden');
+                } else {
+                    viz.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
