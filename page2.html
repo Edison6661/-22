@@ -18,25 +18,30 @@
         }
         .container {
             display: flex;
+            flex-wrap: wrap;
         }
         .menu {
             width: 25%;
             border: 2px solid black;
             padding: 20px;
+            box-sizing: border-box;
         }
         .menu button {
             display: block;
             width: 100%;
             margin-bottom: 10px;
-            padding: 10px;
+            padding: 15px;
             cursor: pointer;
             border: 1px solid black;
+            border-radius: 15%;
             background-color: blue;
             color: white;
+            font-size: 16px;
         }
         .content {
             width: 75%;
             padding: 20px;
+            box-sizing: border-box;
         }
         .visualization {
             border: 2px solid black;
@@ -61,14 +66,14 @@
 
     <div class="container">
         <div class="menu">
-            <button onclick="showSection('tag-selector')">Селектори тегу</button>
-            <button onclick="showSection('class-selector')">Селектори класів</button>
-            <button onclick="showSection('id-selector')">Селектори ідентифікаторів</button>
-            <button onclick="showSection('other-selectors')">Інші селектори</button>
-            <button onclick="showSection('css-styling')">CSS: Шрифти, Текст, Таблиці, Фон, Контур, Списки, СSS Просунутий</button>
+            <button onclick="showContent('tag-selector')">Селектори тегу</button>
+            <button onclick="showContent('class-selector')">Селектори класів</button>
+            <button onclick="showContent('id-selector')">Селектори ідентифікаторів</button>
+            <button onclick="showContent('other-selectors')">Інші селектори</button>
+            <button onclick="showContent('css-styling')">CSS: Шрифти, Текст, Таблиці, Фон, Контур, Списки, СSS Просунутий</button>
         </div>
         <div class="content">
-            <div id="tag-selector" class="hidden">
+            <div id="tag-selector" class="visualization hidden">
                 <h3>Селектори тегу</h3>
                 <pre>
 &lt;!-- HTML --&gt;
@@ -79,11 +84,11 @@ p {
     color: blue;
 }
                 </pre>
-                <div class="visualization">
+                <div>
                     <p>Це селектор тегу для <b>абзацу</b>.</p>
                 </div>
             </div>
-            <div id="class-selector" class="hidden">
+            <div id="class-selector" class="visualization hidden">
                 <h3>Селектори класів</h3>
                 <pre>
 &lt;!-- HTML --&gt;
@@ -95,11 +100,11 @@ p {
     padding: 10px;
 }
                 </pre>
-                <div class="visualization">
+                <div>
                     <div class="highlight">Це селектор класу.</div>
                 </div>
             </div>
-            <div id="id-selector" class="hidden">
+            <div id="id-selector" class="visualization hidden">
                 <h3>Селектори ідентифікаторів</h3>
                 <pre>
 &lt;!-- HTML --&gt;
@@ -111,11 +116,11 @@ p {
     color: green;
 }
                 </pre>
-                <div class="visualization">
+                <div>
                     <h1 id="main-title">Це селектор ідентифікатора</h1>
                 </div>
             </div>
-            <div id="other-selectors" class="hidden">
+            <div id="other-selectors" class="visualization hidden">
                 <h3>Інші селектори</h3>
                 <pre>
 &lt;!-- HTML --&gt;
@@ -138,7 +143,7 @@ ul li:last-child {
     font-weight: bold;
 }
                 </pre>
-                <div class="visualization">
+                <div>
                     <ul>
                         <li>Елемент 1</li>
                         <li class="special">Елемент 2</li>
@@ -146,7 +151,7 @@ ul li:last-child {
                     </ul>
                 </div>
             </div>
-            <div id="css-styling" class="hidden">
+            <div id="css-styling" class="visualization hidden">
                 <h3>CSS: Шрифти, Текст, Таблиці, Фон, Контур, Списки, СSS Просунутий</h3>
                 <pre>
 &lt;!-- HTML --&gt;
@@ -161,7 +166,7 @@ ul li:last-child {
     border: 1px solid black;
 }
                 </pre>
-                <div class="visualization">
+                <div>
                     <div class="styled-text">Це стильовий текст.</div>
                 </div>
             </div>
@@ -169,8 +174,8 @@ ul li:last-child {
     </div>
 
     <script>
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.content > div');
+        function showContent(sectionId) {
+            const sections = document.querySelectorAll('.visualization');
             sections.forEach(section => section.classList.add('hidden'));
 
             document.getElementById(sectionId).classList.remove('hidden');
