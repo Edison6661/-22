@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №5</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .content {
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: 2px solid black;
+            border-radius: 15%;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #FFD700;
+            color: black;
+        }
+
+        .visualization {
+            border: 2px solid black;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Лабораторна робота №5</h1>
+        <h2>Тема: ФУНКЦІОНАЛЬНЕ ЗАСТОСУВАННЯ JAVASCRIPT У HTML-ДОКУМЕНТІ</h2>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <h2>Мета:</h2>
+            <p>Придбати практичні навички роботи з масивами у JS-сценаріях. Реалізація програм засобами мови JavaScript.</p>
+
+            <h2>ХІД ВИКОНАННЯ РОБОТИ</h2>
+            <ol>
+                <li>У звітному HTML-документі розмістити тему та постановку задачі лабораторної роботи №5.</li>
+                <li>Розмістити результати виконання та програмний код 2 пункту у звітному HTML-документі, записавши назви файлів HTML-документів.</li>
+                <li>Використовуючи сценарій на JavaScript, виконати завдання, яке приведене у Таблиці №1. Кожному студенту виконати своє завдання. Номер варіанта відповідає останній цифрі студента у списку групи. Наприклад, Студент 18 за списком – буде виконувати 8 варіант.</li>
+                <li>Розмістити результат виконання та програмний код 4 пункту у звітному HTML-документі.</li>
+                <li>Забезпечити виконання завдання згідно з варіантом (Таблиця №2), сформувати необхідні дані, вбудовані у програму, виконати тестування програми.</li>
+                <li>Розмістити результат виконання та програмний код 6 пункту у звітному HTML-документі.</li>
+                <li>У власному сайті на свій розсуд застосувати сценарії на JavaScript. Продемонструвати викладачу та відобразити у звітному HTML-документі.</li>
+                <li>У звітному HTML-документі оформити звіт лабораторної роботи №4.</li>
+            </ol>
+        </div>
+
+        <div class="buttons-container">
+            <button class="btn" onclick="showContent('task1')">Завдання №1</button>
+            <button class="btn" onclick="showContent('task2')">Завдання №2</button>
+        </div>
+
+        <div id="task1" class="visualization hidden">
+            <h3>Завдання №1: Одновимірний масив</h3>
+            <p>Створити одновимірний масив, кількість елементів якого задана користувачем. Обчислити суму елементів між максимальним та мінімальними значеннями масиву.</p>
+            <p>Упорядкувати масив у порядку зростання (метод швидкого сортування). Надрукувати вхідний та вихідний масив. Застосувати функції.</p>
+            <pre>
+&lt;script&gt;
+function quickSort(arr) {
+    if (arr.length &lt;= 1) return arr;
+    let pivot = arr[Math.floor(arr.length / 2)];
+    let left = arr.filter(x =&gt; x &lt; pivot);
+    let middle = arr.filter(x =&gt; x === pivot);
+    let right = arr.filter(x =&gt; x &gt; pivot);
+    return quickSort(left).concat(middle, quickSort(right));
+}
+
+function calculateSumBetweenMinMax(arr) {
+    let min = Math.min(...arr);
+    let max = Math.max(...arr);
+    let minIndex = arr.indexOf(min);
+    let maxIndex = arr.indexOf(max);
+    if (minIndex &gt; maxIndex) [minIndex, maxIndex] = [maxIndex, minIndex];
+    return arr.slice(minIndex + 1, maxIndex).reduce((sum, x) =&gt; sum + x, 0);
+}
+
+let size = prompt('Enter the number of elements:');
+let array = Array.from({length: size}, () =&gt; Math.floor(Math.random() * 100));
+console.log('Original array:', array);
+let sortedArray = quickSort(array);
+console.log('Sorted array:', sortedArray);
+let sumBetween = calculateSumBetweenMinMax(array);
+console.log('Sum between min and max:', sumBetween);
+&lt;/script&gt;
+            </pre>
+        </div>
+
+        <div id="task2" class="visualization hidden">
+            <h3>Завдання №2: Календар</h3>
+            <p>Реалізувати можливість вибору дати у елемент форми з спеціального візуального компоненту. Вимоги до компоненту: вибір числа, перехід між місяцями та роками, відміна вибору дати.</p>
+            <pre>
+&lt;!-- HTML --&gt;
+&lt;input type="text" id="datepicker" placeholder="Оберіть дату"&gt;
+
+&lt;!-- CSS --&gt;
+&lt;style&gt;
+#datepicker {
+    width: 200px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+&lt;/style&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+document.addEventListener('DOMContentLoaded', function () {
+    const datepicker = document.getElementById('datepicker');
+    datepicker.addEventListener('focus', function () {
+        let picker = new Pikaday({
+            field: datepicker,
+            format: 'D MMM YYYY',
+            onSelect: function () {
+                console.log(this.getMoment().format('Do MMMM YYYY'));
+            }
+        });
+    });
+});
+&lt;/script&gt;
+            </pre>
+        </div>
+    </div>
+
+    <script>
+        function showContent(id) {
+            const visualizations = document.querySelectorAll('.visualization');
+            visualizations.forEach(viz => {
+                if (viz.id === id) {
+                    viz.classList.remove('hidden');
+                } else {
+                    viz.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
