@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №3</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: blue;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        h2 {
+            color: blue;
+        }
+        .content, .example {
+            border: 2px solid black;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .buttons-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .buttons-container button {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid black;
+            border-radius: 15%;
+            background-color: blue;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .visualization {
+            border: 2px solid black;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 200px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Лабораторна робота №3</h1>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <h2>Тема: ВЕРСТКА HTML-ДОКУМЕНТУ. БЛОКОВА ВЕРСТКА. ВЕРСТКА ЗАСОБАМИ CSS та FLEXBOX.</h2>
+            <h2>Мета:</h2>
+            <ul>
+                <li>Придбати практичні навички роботи верстки сторінок засобами CSS, верстки на основі плаваючих елементів, з’ясувати переваги та недоліки типів макетів веб-сторінок</li>
+                <li>Придбати практичні навички роботи верстки сторінок засобами CSS та FLEXBOX</li>
+            </ul>
+
+            <h2>ХІД ВИКОНАННЯ РОБОТИ</h2>
+            <ol>
+                <li>У звітному HTML-документі розмістити тему, мету, лабораторної роботи №3, місце розташування власного сайту та HTML звітного документу</li>
+                <li>Виконати Завдання № 1, а саме: розробити макет власного сайту. Який тип макету ви використовуєте. Вміти пояснити викладачу.</li>
+                <li>Яку базову концепцію ви застосовуєте при верстці сторінок засобами CSS. Вміти пояснити викладачу.</li>
+                <li>У звітному HTML-документі розмістити скріншот головної сторінки вашого сайту.</li>
+                <li>У звітному HTML-документі розмістити HTML-програмний код макету власного сайту. Вміти пояснити викладачу особливості вашого макету.</li>
+                <li>Засобами HTML та CSS виконати Завдання №2, а саме: створити окремі веб-сторінки, а саме:
+                    <ul>
+                        <li>Розмітку за допомогою таблиці (номер варіанта – остання цифра у списку групи)
+                            <ul>
+                                <li>Фіксована таблична верстка</li>
+                                <li>Гумова таблична верстка</li>
+                            </ul>
+                        </li>
+                        <li>Розмітку за допомогою блоків (плаваючих елементів) (номер варіанта – остання цифра у списку групи + 1)
+                            <ul>
+                                <li>Фіксована блокова верстка</li>
+                                <li>Гумова блокова верстка</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>У висновках написати переваги та недоліки створення веб-додатків за допомогою таблиці та за допомогою блоків (плаваючих блоків)</li>
+                <li>Виконати Завдання №3, використовуючи засоби CSS та FLEXBOX</li>
+                <li>Кожному студенту виконати свій номер варіанта Завдання №3, за технологією FLEXBOX та засобами CSS.</li>
+                <li>У звітному HTML-документі розмістити скріншот сторінки, яка була виконана технологією FLEXBOX. У звітному HTML-документі розмістити HTML- код та CSS-код сторінки, яка була виконана технологією FLEXBOX. Вміти пояснити викладачу особливості вашого макету.</li>
+                <li>Написати та оформити висновки до всіх завдань.</li>
+            </ol>
+        </div>
+
+        <div class="buttons-container">
+            <button onclick="showContent('screenshot')">Скріншот головної сторінки</button>
+            <button onclick="showContent('html-code')">HTML-програмний код</button>
+            <button onclick="showContent('fixed-table-layout')">Фіксована таблична верстка</button>
+            <button onclick="showContent('fluid-table-layout')">Гумова таблична верстка</button>
+            <button onclick="showContent('fixed-block-layout')">Фіксована блокова верстка</button>
+            <button onclick="showContent('fluid-block-layout')">Гумова блокова верстка</button>
+            <button onclick="showContent('flexbox')">Flexbox</button>
+        </div>
+
+        <div id="screenshot" class="visualization hidden">
+            <h3>Скріншот головної сторінки</h3>
+            <img src="screenshot.png" alt="Скріншот головної сторінки">
+        </div>
+
+        <div id="html-code" class="visualization hidden">
+            <h3>HTML-програмний код</h3>
+            <pre>
+<!-- HTML код вашого сайту -->
+&lt;div class="header"&gt;
+    &lt;h1&gt;Мій сайт&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div class="content"&gt;
+    &lt;p&gt;Ласкаво просимо на мій сайт!&lt;/p&gt;
+&lt;/div&gt;
+            </pre>
+        </div>
+
+        <div id="fixed-table-layout" class="visualization hidden">
+            <h3>Фіксована таблична верстка</h3>
+            <pre>
+<!-- HTML код для фіксованої табличної верстки -->
+&lt;table style="width: 600px;"&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Стовпець 1&lt;/td&gt;
+        &lt;td&gt;Стовпець 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Дані 1&lt;/td&gt;
+        &lt;td&gt;Дані 2&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+            </pre>
+        </div>
+
+        <div id="fluid-table-layout" class="visualization hidden">
+            <h3>Гумова таблична верстка</h3>
+            <pre>
+<!-- HTML код для гумової табличної верстки -->
+&lt;table style="width: 100%;"&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Стовпець 1&lt;/td&gt;
+        &lt;td&gt;Стовпець 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Дані 1&lt;/td&gt;
+        &lt;td&gt;Дані 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/table&gt;
+            </pre>
+        </div>
+
+        <div id="fixed-block-layout" class="visualization hidden">
+            <h3>Фіксована блокова верстка</h3>
+            <pre>
+<!-- HTML код для фіксованої блокової верстки -->
+&lt;div style="width: 600px;"&gt;
+    &lt;div style="float: left; width: 300px;"&gt;Блок 1&lt;/div&gt;
+    &lt;div style="float: right; width: 300px;"&gt;Блок 2&lt;/div&gt;
+&lt;/div&gt;
+            </pre>
+        </div>
+
+        <div id="fluid-block-layout" class="visualization hidden">
+            <h3>Гумова блокова верстка</h3>
+            <pre>
+<!-- HTML код для гумової блокової верстки -->
+&lt;div style="width: 100%;"&gt;
+    &lt;div style="float: left; width: 50%;"&gt;Блок 1&lt;/div&gt;
+    &lt;div style="float: right; width: 50%;"&gt;Блок 2&lt;/div&gt;
+&lt;/div&gt;
+            </pre>
+        </div>
+
+        <div id="flexbox" class="visualization hidden">
+            <h3>Flexbox</h3>
+            <pre>
+<!-- HTML та CSS код для верстки за допомогою Flexbox -->
+&lt;style&gt;
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+.flex-item {
+    width: 45%;
+    padding: 10px;
+    background-color: lightgray;
+}
+&lt;/style&gt;
+
+&lt;div class="flex-container"&gt;
+    &lt;div class="flex-item"&gt;Блок 1&lt;/div&gt;
+    &lt;div class="flex-item"&gt;Блок 2&lt;/div&gt;
+&lt;/div&gt;
+            </pre>
+        </div>
+
+        <div class="content">
+            <h2>Висновки</h2>
+            <p>
+                Під час виконання лабораторної роботи ми здобули практичні навички роботи з різними типами верстки сторінок: за допомогою таблиць, блоків та Flexbox. Ми навчилися застосовувати фіксовану та гумову верстку, зрозуміли переваги та недоліки кожного підходу.
+            </p>
+            <p>
+                Таблична верстка надає точний контроль над розташуванням елементів, але менш гнучка в порівнянні з блоковою версткою. Flexbox, з іншого боку, дозволяє створювати адаптивні макети, що автоматично підлаштовуються під різні розміри екранів, роблячи розробку більш ефективною та сучасною.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showContent(id) {
+            const visualizations = document.querySelectorAll('.visualization');
+            visualizations.forEach(viz => {
+                if (viz.id === id) {
+                    viz.classList.remove('hidden');
+                } else {
+                    viz.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
